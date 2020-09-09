@@ -7,6 +7,11 @@
     "typescript": "^4.0.2"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json"
-  }
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "build:esm": "tsc -p tsconfig.json"
+  },
+  "main": "./lib/cjs/index.js",
+  "types": "./lib/cjs/index.d.js",
+  "module": "./lib/esm/index.js"
 }
