@@ -8,7 +8,9 @@
     "@commitlint/config-conventional": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
+    "commitizen": "^4.2.1",
     "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.8.1",
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.3.0",
@@ -18,7 +20,8 @@
     "build": "yarn build:esm && yarn build:cjs",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "build:esm": "tsc -p tsconfig.json",
-    "lint": "eslint src/**/* --ext .js,.ts"
+    "lint": "eslint src/**/* --ext .js,.ts",
+    "commit": "git cz"
   },
   "main": "./lib/cjs/index.js",
   "types": "./lib/cjs/index.d.js",
@@ -28,6 +31,11 @@
       "pre-push": "yarn lint",
       "pre-commit": "yarn lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
     }
   }
 }
