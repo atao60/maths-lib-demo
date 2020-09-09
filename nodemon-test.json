@@ -1,0 +1,13 @@
+{
+    "watch": [
+        "src",
+        "test"
+    ],
+    "ext": "js,ts",
+    "ignore": [
+        ".git",
+        ".yarn",
+        ".follow-up"
+    ],
+    "exec": "yarn test:dev"
+}

@@ -6,32 +6,44 @@
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^10.0.0",
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
+    "chai": "^4.2.0",
     "commitizen": "^4.2.1",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.8.1",
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.3.0",
+    "mocha": "^8.1.3",
+    "nodemon": "^2.0.4",
     "standard-version": "^9.0.0",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "build:esm": "tsc -p tsconfig.json",
-    "lint": "eslint src/**/* --ext .js,.ts",
+    "lint": "eslint src/**/* test/**/* --ext .js,.ts",
     "commit": "git cz",
     "unstaged:check": "git diff-index HEAD --",
-    "release": "cross-env HUSKY_SKIP_HOOKS=1 standard-version -a"
+    "release": "cross-env HUSKY_SKIP_HOOKS=1 standard-version -a",
+    "fullcheck": "yarn lint && yarn test:dev",
+    "release:pre": "yarn unstaged:check && yarn fullcheck && yarn build && git add -A",
+    "test:dev": "cross-env TS_NODE_PROJECT=\"tsconfig-test.json\" mocha -r ts-node/register",
+    "test:dev:watch": "nodemon --config ./nodemon-test.json",
+    "test": "yarn test:dev:watch",
+    "start": "yarn test"
   },
   "main": "./lib/cjs/index.js",
   "types": "./lib/cjs/index.d.js",
   "module": "./lib/esm/index.js",
   "husky": {
     "hooks": {
-      "pre-push": "yarn lint",
+      "pre-push": "yarn fullcheck",
       "pre-commit": "yarn lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
