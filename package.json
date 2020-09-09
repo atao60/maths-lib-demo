@@ -4,6 +4,8 @@
   "description": "Publishing Node modules with Yarn 2, TypeScript and ES modules",
   "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
     "cross-env": "^7.0.2",
@@ -24,7 +26,8 @@
   "husky": {
     "hooks": {
       "pre-push": "yarn lint",
-      "pre-commit": "yarn lint"
+      "pre-commit": "yarn lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
