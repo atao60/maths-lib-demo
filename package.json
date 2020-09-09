@@ -1,6 +1,6 @@
 {
   "name": "@atao60/maths-lib-demo",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Publishing Node modules with Yarn 2, TypeScript and ES modules",
   "license": "MIT",
   "devDependencies": {

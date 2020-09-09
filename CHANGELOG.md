@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/atao60/maths-lib-demo/compare/v0.0.3...v0.0.4) (2020-09-09)
+
+
+### Others
+
+* add publishing ([4f6b872](https://github.com/atao60/maths-lib-demo/commit/4f6b87288d9661f514f150a962747e002d812413))
+
 ### [0.0.3](https://github.com/atao60/maths-lib-demo/compare/v0.0.2...v0.0.3) (2020-09-09)
 
 
