@@ -4,14 +4,27 @@
   "description": "Publishing Node modules with Yarn 2, TypeScript and ES modules",
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.8.1",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.3.0",
     "typescript": "^4.0.2"
   },
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
     "build:cjs": "tsc -p tsconfig-cjs.json",
-    "build:esm": "tsc -p tsconfig.json"
+    "build:esm": "tsc -p tsconfig.json",
+    "lint": "eslint src/**/* --ext .js,.ts"
   },
   "main": "./lib/cjs/index.js",
   "types": "./lib/cjs/index.d.js",
-  "module": "./lib/esm/index.js"
+  "module": "./lib/esm/index.js",
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint",
+      "pre-commit": "yarn lint"
+    }
+  }
 }
