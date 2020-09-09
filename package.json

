@@ -38,8 +38,7 @@
     "test:dev:watch": "nodemon --config ./nodemon-test.json",
     "test": "yarn test:dev:watch",
     "start": "yarn test",
-    "coverage": "nyc yarn test:dev",
-    "prepublishOnly": "yarn install --frozen-lockfile && yarn build"
+    "coverage": "nyc yarn test:dev"
   },
   "main": "./lib/cjs/index.js",
   "types": "./lib/cjs/index.d.js",
@@ -48,8 +47,7 @@
     "hooks": {
       "pre-push": "yarn fullcheck",
       "pre-commit": "yarn lint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-publish": "yarn prepublishOnly"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "config": {
@@ -70,11 +68,5 @@
       "prerelease": "yarn unstaged:check && yarn lint && yarn build && git add -A",
       "posttag": "cross-env HUSKY_SKIP_HOOKS=1 git push --follow-tags"
     }
-  },
-  "files": [
-    "lib/"
-  ],
-  "publishConfig": {
-    "access": "public"
   }
 }
